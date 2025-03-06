@@ -11,6 +11,8 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
+import static seedu.address.model.util.SampleDataUtil.EMPTY_REMARK;
+
 /**
  * A utility class to help with building Person objects.
  */
@@ -90,7 +92,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags);
+        return new Person(name, phone, email, address, tags, EMPTY_REMARK);
     }
 
 }
