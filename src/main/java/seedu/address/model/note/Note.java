@@ -14,7 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Note implements Comparable<Note> {
 
-    public static final String TITLE_AND_CONTENT_CONSTRAINTS = "Title and content cannot be empty";
+    public static final String TITLE_AND_CONTENT_CONSTRAINTS = "Title and Content of Note cannot be empty"
+            + "adhere to the following format:\n"
+            + "note INDEX nt/TITLE nc/CONTENT\n"
+            + "example: note 1 nt/JohnFirstAppt nc/john did well today";
 
     private final String title;
     private final String content;

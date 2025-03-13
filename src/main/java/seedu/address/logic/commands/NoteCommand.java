@@ -5,10 +5,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PATIENTS;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.TreeSet;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -30,6 +32,7 @@ public class NoteCommand extends Command {
             + PREFIX_NOTE_CONTENT + "Allergies include:\n - Penicillin\n - Nuts";
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note Title: %2$s, Note Content: %3$s";
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Person: %1$s";
+    public static final String MESSAGE_NOT_ADDED_NOTE = "Note must have title and content! ";
     public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from Person: %1$s";
 
     private final Index index;
@@ -80,6 +83,42 @@ public class NoteCommand extends Command {
         model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PATIENTS);
 
         return new CommandResult(generateSuccessMessage(editedPatient));
+    }
+
+    /**
+     * Stores the details to add the note with. Each non-empty field value will replace the
+     * corresponding field value of the note.
+     */
+    public static class AddNoteDescriptor {
+        private String title;
+        private String content;
+        private LocalDateTime dateTimeCreated;
+
+        public AddNoteDescriptor() {
+        } /* Default Constructor*/
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+            return CollectionUtil.isAnyNonNull(title, content, dateTimeCreated);
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getContent() {
+            return content;
+        }
     }
 
     /**
