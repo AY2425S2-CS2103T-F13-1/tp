@@ -64,6 +64,14 @@ public interface Model {
     void deletePatient(Patient target);
 
     /**
+     * Deletes the given patient {@code target} with {@code editedPatient}.
+     * {@code target} must exist in the address book.
+     * The patient identity of {@code editedPatient} must not be the same as another
+     * existing patient in the address book.
+     */
+    void deletePatientNote(Patient target, Patient editedPatient);
+
+    /**
      * Adds the given patient.
      * {@code patient} must not already exist in the app.
      */

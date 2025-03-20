@@ -144,6 +144,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void deletePatientNote(Patient target, Patient editedPatient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setPatient(Patient target, Patient editedPatient) {
             throw new AssertionError("This method should not be called.");
         }

@@ -106,6 +106,14 @@ public class PatientBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Note} of the {@code Patient} that we are building to none.
+     */
+    public PatientBuilder withNoNote() {
+        this.notes = new TreeSet<>();
+        return this;
+    }
+
     public Patient build() {
         return new Patient(name, phone, email, address, tags, notes);
     }
