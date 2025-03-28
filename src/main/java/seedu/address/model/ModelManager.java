@@ -153,25 +153,18 @@ public class ModelManager implements Model {
 
     @Override
     public void undoAddressBook() throws CommandException {
-        ReadOnlyAddressBook previousState = addressBook.recoverPreviousState();
-        this.setAddressBook(previousState);
+        ReadOnlyAddressBook state = addressBook.getOldState();
+        this.setAddressBook(state);
     }
 
     @Override
     public void redoAddressBook() throws CommandException {
-        ReadOnlyAddressBook futureState = addressBook.recoverFutureState();
-        this.setAddressBook(futureState);
-    }
-
-
-    @Override
-    public void saveCurrentAddressBook() {
-        addressBook.saveCurrentState();
-    }
-
-    @Override
-    public void undoExceptionalCommand() throws CommandException {
-        ReadOnlyAddressBook state = addressBook.recoverPreviousStateWithoutSaving();
+        ReadOnlyAddressBook state = addressBook.getFutureState();
         this.setAddressBook(state);
+    }
+
+    @Override
+    public void saveAddressBook() {
+        addressBook.saveState();
     }
 }

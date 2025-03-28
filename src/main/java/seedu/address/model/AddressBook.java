@@ -39,6 +39,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+        versionedAddressBook.saveState(toBeCopied);
     }
 
     //// list overwrite operations
@@ -133,34 +134,26 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Stores the current states of the CampusConnect.
+     * Stores the current states.
      */
-    public void saveCurrentState() {
-        ReadOnlyAddressBook newAddressBook = new AddressBook(this);
-        versionedAddressBook.saveOldData(newAddressBook);
-        versionedAddressBook.clearFutureData();
+    public void saveState() {
+        ReadOnlyAddressBook copy = new AddressBook(this);
+        versionedAddressBook.saveState(copy);
     }
 
     /**
-     * Recovers from previous state.
+     * Returns previous state.
      */
-    public ReadOnlyAddressBook recoverPreviousState() throws UndoException {
-        ReadOnlyAddressBook res = versionedAddressBook.extractOldData();
-        versionedAddressBook.saveFutureData(new AddressBook(this));
+    public ReadOnlyAddressBook getOldState() throws UndoException {
+        ReadOnlyAddressBook res = versionedAddressBook.getOldState();
         return res;
     }
 
     /**
-     * Recovers the previously undone state.
+     * Returns the previously undone state.
      */
-    public ReadOnlyAddressBook recoverFutureState() throws RedoException {
-        ReadOnlyAddressBook res = versionedAddressBook.extractFutureData();
-        versionedAddressBook.saveOldData(new AddressBook(this));
+    public ReadOnlyAddressBook getFutureState() throws RedoException {
+        ReadOnlyAddressBook res = versionedAddressBook.getFutureState();
         return res;
     }
-
-    public ReadOnlyAddressBook recoverPreviousStateWithoutSaving() throws UndoException {
-        return versionedAddressBook.extractOldData();
-    }
-
 }

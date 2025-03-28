@@ -25,8 +25,8 @@ public class Messages {
     public static final String MESSAGE_NO_NOTES = "Patient %1$s has no notes";
     public static final String MESSAGE_NOT_ADDED_NOTE = "Note must have title and content! ";
     public static final String MESSAGE_INVALID_INDEX = "Invalid index! Please provide a positive integer within range.";
-    public static final String MESSAGE_UNDO_FAILURE = "Already at the oldest change";
-    public static final String MESSAGE_REDO_FAILURE = "Already at the latest change";
+    public static final String MESSAGE_UNDO_FAILURE = "No command to undo!";
+    public static final String MESSAGE_REDO_FAILURE = "No command to redo!";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

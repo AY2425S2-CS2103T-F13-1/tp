@@ -174,12 +174,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void saveCurrentAddressBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void undoExceptionalCommand() throws CommandException {
+        public void saveAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
     }

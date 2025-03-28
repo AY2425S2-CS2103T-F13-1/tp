@@ -9,8 +9,4 @@ public class UndoException extends CommandException {
     public UndoException(String message) {
         super(message);
     }
-
-    public UndoException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

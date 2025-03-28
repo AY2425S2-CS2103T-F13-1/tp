@@ -10,7 +10,7 @@ import seedu.address.model.Model;
  */
 public class RedoCommand extends Command {
     public static final String COMMAND_WORD = "redo";
-    public static final String MESSAGE_SUCCESS = "The patient list has gone back to the future!";
+    public static final String MESSAGE_SUCCESS = "Previously undone command has been recovered!";
 
     @Override
     public CommandResult execute(Model model) throws CommandException {

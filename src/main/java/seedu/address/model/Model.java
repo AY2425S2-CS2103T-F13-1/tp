@@ -108,10 +108,5 @@ public interface Model {
     /**
      * Saves current state of model before execution.
      */
-    void saveCurrentAddressBook();
-
-    /**
-     * Undo the previous actions without saving the current actions.
-     */
-    void undoExceptionalCommand() throws CommandException;
+    void saveAddressBook();
 }
