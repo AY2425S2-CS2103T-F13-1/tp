@@ -369,27 +369,21 @@ _{More to be added}_
 
   Use case resumes at step 1.
 
-- 2d. The given patient has invalid email format.
+- 2d. The given patient's name contains special characters.
 
   - 2d1. NeuroSync shows an error message.
 
   Use case resumes at step 1.
 
-- 2e. The given patient's name contains special characters.
+- 2e. The given patient's name exceeds the maximum length of 50 characters.
 
   - 2e1. NeuroSync shows an error message.
 
   Use case resumes at step 1.
 
-- 2f. The given patient's name exceeds the maximum length of 50 characters.
+- 2f. The given patient's occupation exceeds the maximum length of 50 characters.
 
   - 2f1. NeuroSync shows an error message.
-
-  Use case resumes at step 1.
-
-- 2g. The given patient's occupation exceeds the maximum length of 50 characters.
-
-  - 2g1. NeuroSync shows an error message.
 
   Use case resumes at step 1.
 

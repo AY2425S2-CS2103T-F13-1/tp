@@ -25,7 +25,6 @@
       <FlowPane fx:id="tags" styleClass="patient-tags" />
       <Label fx:id="phone" styleClass="cell-small-label" />
       <Label fx:id="address" styleClass="cell-small-label" />
-      <Label fx:id="email" styleClass="cell-small-label" />
       <VBox fx:id="notesContainer" maxWidth="Infinity">
         <Label text="Notes:" wrapText="true" styleClass="cell-small-label, notes-label"/>
         <VBox fx:id="notes" maxWidth="Infinity" />

@@ -40,8 +40,6 @@ public class PatientCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
-    private Label email;
-    @FXML
     private FlowPane tags;
     @FXML
     private VBox notes;
@@ -60,7 +58,6 @@ public class PatientCard extends UiPart<Region> {
         name.setText(patient.getName().fullName);
         phone.setText(patient.getPhone().value);
         address.setText(patient.getAddress().value);
-        email.setText(patient.getEmail().value);
 
         // Display tags with dynamic colors only for multiple tags
         var patientTags = patient.getTags().stream()
@@ -151,15 +148,6 @@ public class PatientCard extends UiPart<Region> {
      */
     public String getAddressText() {
         return address.getText();
-    }
-
-    /**
-     * Retrieves the patient's email text.
-     *
-     * @return The email.
-     */
-    public String getEmailText() {
-        return email.getText();
     }
 
     /**

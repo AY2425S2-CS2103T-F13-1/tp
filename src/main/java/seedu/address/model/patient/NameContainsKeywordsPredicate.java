@@ -21,7 +21,6 @@ public class NameContainsKeywordsPredicate implements Predicate<Patient> {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(patient.getName().fullName, keyword)
                         || StringUtil.containsWordIgnoreCase(patient.getPhone().value, keyword)
-                        || StringUtil.containsWordIgnoreCase(patient.getEmail().value, keyword)
                         || StringUtil.containsWordIgnoreCase(patient.getAddress().value, keyword));
     }
 

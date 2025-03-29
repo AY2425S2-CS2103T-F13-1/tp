@@ -21,7 +21,6 @@ public class Patient {
     // Identity fields
     private final Name name;
     private final Phone phone;
-    private final Email email;
 
     // Data fields
     private final Address address;
@@ -31,11 +30,10 @@ public class Patient {
     /**
      * Every field must be present and not null.
      */
-    public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Patient(Name name, Phone phone, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, phone, address, tags);
         this.name = name;
         this.phone = phone;
-        this.email = email;
         this.address = address;
         this.tags.addAll(tags);
         this.notes = new TreeSet<>();
@@ -44,11 +42,10 @@ public class Patient {
     /**
      * Every field must be present and not null.
      */
-    public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags, TreeSet<Note> notes) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Patient(Name name, Phone phone, Address address, Set<Tag> tags, TreeSet<Note> notes) {
+        requireAllNonNull(name, phone, address, tags);
         this.name = name;
         this.phone = phone;
-        this.email = email;
         this.address = address;
         this.tags.addAll(tags);
         this.notes = notes;
@@ -60,10 +57,6 @@ public class Patient {
 
     public Phone getPhone() {
         return phone;
-    }
-
-    public Email getEmail() {
-        return email;
     }
 
     public Address getAddress() {
@@ -118,7 +111,6 @@ public class Patient {
         Patient otherPatient = (Patient) other;
         return name.equals(otherPatient.name)
                 && phone.equals(otherPatient.phone)
-                && email.equals(otherPatient.email)
                 && address.equals(otherPatient.address)
                 && tags.equals(otherPatient.tags)
                 && notes.equals(otherPatient.notes);
@@ -127,7 +119,7 @@ public class Patient {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, notes);
+        return Objects.hash(name, phone, address, tags, notes);
     }
 
     @Override
@@ -135,7 +127,6 @@ public class Patient {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
-                .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
                 .add("notes", notes)

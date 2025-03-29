@@ -26,13 +26,11 @@ public class PatientCardTest {
         String expectedName = patient.getName().fullName;
         String expectedPhone = patient.getPhone().value;
         String expectedAddress = patient.getAddress().value;
-        String expectedEmail = patient.getEmail().value;
 
         assertEquals(expectedId, "1. "); // Dummy check, as UI methods are removed
         assertEquals(expectedName, patient.getName().fullName);
         assertEquals(expectedPhone, patient.getPhone().value);
         assertEquals(expectedAddress, patient.getAddress().value);
-        assertEquals(expectedEmail, patient.getEmail().value);
     }
 
     @Test

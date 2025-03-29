@@ -48,8 +48,6 @@ public class Messages {
         builder.append(patient.getName())
                 .append("; Phone: ")
                 .append(patient.getPhone())
-                .append("; Email: ")
-                .append(patient.getEmail())
                 .append("; Address: ")
                 .append(patient.getAddress())
                 .append("; \nNotes: ")

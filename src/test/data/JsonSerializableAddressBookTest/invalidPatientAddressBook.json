@@ -1,8 +1,7 @@
 {
   "patients": [ {
     "name": "Hans Muster",
-    "phone": "9482424",
-    "email": "invalid@email!3e",
+    "phone": "abcde",
     "address": "4th street"
   } ]
 }

@@ -7,7 +7,6 @@ import java.util.TreeSet;
 
 import seedu.address.model.note.Note;
 import seedu.address.model.patient.Address;
-import seedu.address.model.patient.Email;
 import seedu.address.model.patient.Name;
 import seedu.address.model.patient.Patient;
 import seedu.address.model.patient.Phone;
@@ -21,7 +20,6 @@ public class PatientBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TITLE = "Note Title";
     public static final String DEFAULT_CONTENT = "Note Content";
@@ -29,7 +27,6 @@ public class PatientBuilder {
 
     private Name name;
     private Phone phone;
-    private Email email;
     private Address address;
     private Set<Tag> tags;
     private TreeSet<Note> notes;
@@ -40,7 +37,6 @@ public class PatientBuilder {
     public PatientBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         notes = new TreeSet<>();
@@ -52,7 +48,6 @@ public class PatientBuilder {
     public PatientBuilder(Patient patientToCopy) {
         name = patientToCopy.getName();
         phone = patientToCopy.getPhone();
-        email = patientToCopy.getEmail();
         address = patientToCopy.getAddress();
         tags = new HashSet<>(patientToCopy.getTags());
         notes = new TreeSet<>(patientToCopy.getNotes());
@@ -91,14 +86,6 @@ public class PatientBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Patient} that we are building.
-     */
-    public PatientBuilder withEmail(String email) {
-        this.email = new Email(email);
-        return this;
-    }
-
-    /**
      * Sets the {@code Note} of the {@code Patient} that we are building.
      */
     public PatientBuilder withNotes(Note... notes) {
@@ -115,7 +102,7 @@ public class PatientBuilder {
     }
 
     public Patient build() {
-        return new Patient(name, phone, email, address, tags, notes);
+        return new Patient(name, phone, address, tags, notes);
     }
 
 }

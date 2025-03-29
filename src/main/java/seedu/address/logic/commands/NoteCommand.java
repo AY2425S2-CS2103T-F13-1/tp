@@ -72,7 +72,6 @@ public class NoteCommand extends Command {
         Patient editedPatient = new Patient(
                 patientToEdit.getName(),
                 patientToEdit.getPhone(),
-                patientToEdit.getEmail(),
                 patientToEdit.getAddress(),
                 patientToEdit.getTags(),
                 updatedNotes);

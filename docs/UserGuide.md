@@ -121,8 +121,8 @@ NeuroSync **keeps track of patient details and session notes effortlessly**. No 
 | ------------------ | ----------------------------------------------------------------------------------------- |
 | **List Patients**  | `list`                                                                                    |
 | **Find Patient**   | `find KEYWORD [MORE_KEYWORDS]`                                                            |
-| **Add Patient**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                   |
-| **Edit Patient**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                    |
+| **Add Patient**    | `add n/NAME p/PHONE_NUMBER a/ADDRESS [t/TAG]…​`                                   |
+| **Edit Patient**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [a/ADDRESS] [t/TAG]…​`                    |
 | **Delete Patient** | `delete INDEX`                                                                            |
 | -----------------  | ----------------------------------------------------------------------------------------- |
 | **View Notes**     | `viewnotes INDEX or viewnotes all`                                                        |
@@ -157,8 +157,8 @@ list
 ✔️ **Expected Output:**
 
 ```
-1. John Doe (Phone: 98005442, Email: john.doe@email.com)
-2. Jane Smith (Phone: 91234567, Email: jane.smith@example.com)
+1. John Doe (Phone: 98005442)
+2. Jane Smith (Phone: 91234567)
 ```
 
 ⚠️ **Warning:** This will show all patients, so be mindful if you have a large list.<br>
@@ -183,7 +183,7 @@ find John
 ✔️ **Expected Output:**
 
 ```
-1. John Doe (Phone: 98005442, Email: john.doe@email.com)
+1. John Doe (Phone: 98005442)
 ```
 
 ⚠️ **Warning:** Multiple matches may be returned if you use a common name.<br>
@@ -196,19 +196,19 @@ find John
 ### **Adding a Patient** {#adding-a-patient}
 
 ```bash
-add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​
+add n/NAME p/PHONE_NUMBER a/ADDRESS [t/TAG]…​
 ```
 
 **Example:**
 
 ```bash
-add n/John Doe p/98005442 e/john.doe@email.com a/123 Clementi Street t/ADHD
+add n/John Doe p/98005442 a/123 Clementi Street t/ADHD
 ```
 
 ✔️ **Expected Output:**
 
 ```
-Patient added: John Doe (Phone: 98005442, Email: john.doe@email.com)
+Patient added: John Doe (Phone: 98005442)
 ```
 
 ⚠️ **Warning:** Avoid duplicate names for clarity.<br>
@@ -221,23 +221,23 @@ Patient added: John Doe (Phone: 98005442, Email: john.doe@email.com)
 ### **Editing a Patient** {#editing-a-patient}
 
 ```bash
-edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​
+edit INDEX [n/NAME] [p/PHONE_NUMBER] [a/ADDRESS] [t/TAG]…​
 ```
 
 **Example:**
 
 ```bash
-edit 1 p/91234567 e/john.doe@newemail.com
+edit 1 p/91234567
 ```
 
 ✔️ **Expected Output:**
 
 ```
-Updated patient: John Doe (Phone: 91234567, Email: john.doe@newemail.com)
+Updated patient: John Doe (Phone: 91234567)
 ```
 
 ⚠️ **Warning:** Only update fields that need changing to avoid accidental edits.<br>
-💡 **Tip:** You can edit just one piece of data, like only the phone number or email.
+💡 **Tip:** You can edit just one piece of data, like only the phone number.
 
 [🔝 Back to Top](#table-of-contents)
 

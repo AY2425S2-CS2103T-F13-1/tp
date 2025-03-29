@@ -80,7 +80,6 @@ public class DeleteNoteCommand extends Command {
         Patient editedPatient = new Patient(
                 patientToEdit.getName(),
                 patientToEdit.getPhone(),
-                patientToEdit.getEmail(),
                 patientToEdit.getAddress(),
                 patientToEdit.getTags(),
                 newCopyNotes);
