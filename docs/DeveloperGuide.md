@@ -110,6 +110,13 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 </div>
 <br>
 
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("deletenote 1 nt/JohnAngry")` API call as an example.
+
+![Interactions Inside the Logic Component for the `deletenote 1 nt/JohnAngry` Command](images/DeleteNoteSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteNoteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</div>
+
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.

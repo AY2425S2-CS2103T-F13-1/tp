@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":DeleteNoteCommandParser" as DeleteNoteCommandParser LOGIC_COLOR
+participant "dn:DeleteNoteCommand" as DeleteNoteCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("deleteNote 1 nt/JohnAngry")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("deleteNote 1 nt/JohnAngry")
+activate AddressBookParser
+
+create DeleteNoteCommandParser
+AddressBookParser -> DeleteNoteCommandParser
+activate DeleteNoteCommandParser
+
+DeleteNoteCommandParser --> AddressBookParser
+deactivate DeleteNoteCommandParser
+
+AddressBookParser -> DeleteNoteCommandParser : parse("1 nt/JohnAngry")
+activate DeleteNoteCommandParser
+
+create DeleteNoteCommand
+DeleteNoteCommandParser -> DeleteNoteCommand
+activate DeleteNoteCommand
+
+DeleteNoteCommand --> DeleteNoteCommandParser :
+deactivate DeleteNoteCommand
+
+DeleteNoteCommandParser --> AddressBookParser : dn
+deactivate DeleteNoteCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+DeleteNoteCommandParser -[hidden]-> AddressBookParser
+destroy DeleteNoteCommandParser
+
+AddressBookParser --> LogicManager : dn
+deactivate AddressBookParser
+
+LogicManager -> DeleteNoteCommand : execute(m)
+activate DeleteNoteCommand
+
+DeleteNoteCommand -> Model : setPatient(toEdit, edited)
+activate Model
+
+Model --> DeleteNoteCommand
+deactivate Model
+
+create CommandResult
+DeleteNoteCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeleteNoteCommand
+deactivate CommandResult
+
+DeleteNoteCommand --> LogicManager : r
+deactivate DeleteNoteCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
